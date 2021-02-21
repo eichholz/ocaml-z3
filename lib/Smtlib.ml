@@ -183,6 +183,7 @@ type tactic =
   | SMT
   | QFBV
   | UFBV
+  | QE
   | UsingParams of tactic * (string * bool) list
   | ParOr of tactic * tactic
   | Then of tactic list
@@ -204,6 +205,8 @@ let rec tactic_to_sexp (t : tactic) : sexp = match t with
     SSymbol "qfbv"
   | UFBV ->
     SSymbol "ufbv"
+  | QE ->
+    SSymbol "qe"
   | UsingParams (t', params) ->
     let param_to_sexp (keyword, value) =
       [ SKeyword keyword; SSymbol (string_of_bool value) ] in

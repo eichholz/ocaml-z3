@@ -50,6 +50,7 @@ type tactic =
   | SMT
   | QFBV
   | UFBV
+  | QE
   (** Tactic combinators *)
   | UsingParams of tactic * (string * bool) list
   | ParOr of tactic * tactic
